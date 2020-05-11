@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>📌 Drag and Drop</title>
+
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <main class="board">
+            <div class="column column-todo" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <h2>Todo</h2>
+                <article class="card" draggable="true" ondragstart="drag(event)" data-id="1">
+                    <h3>Todo #1</h3>
+                </article>
+                <article class="card" draggable="true" ondragstart="drag(event)" data-id="2">
+                    <h3>Todo #2</h3>
+                </article>
+                <article class="card" draggable="true" ondragstart="drag(event)" data-id="3">
+                    <h3>Todo #3</h3>
+                </article>
+            </div>
+            <div class="column column-ip" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <h2>In Progress</h2>
+                <article class="card" draggable="true" ondragstart="drag(event)" data-id="4">
+                    <h3>IP #1</h3>
+                </article>
+                <article class="card" draggable="true" ondragstart="drag(event)" data-id="5">
+                    <h3>IP #2</h3>
+                </article>
+                <article class="card" draggable="true" ondragstart="drag(event)" data-id="6">
+                    <h3>IP #3</h3>
+                </article>
+            </div>
+            <div class="column column-done" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <h2>Done</h2>
+                <article class="card" draggable="true" ondragstart="drag(event)" data-id="7">
+                    <h3>Done #1</h3>
+                </article>
+                <article class="card" draggable="true" ondragstart="drag(event)" data-id="8">
+                    <h3>Done #2</h3>
+                </article>
+                <article class="card" draggable="true" ondragstart="drag(event)" data-id="9">
+                    <h3>Done #3</h3>
+                </article>
+            </div>
+        </main>
+
+        <script src="drag-n-drop.js"></script>
+    </body>
+</html>
