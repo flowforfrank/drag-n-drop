@@ -1,5 +1,5 @@
-const dragStart = event => {
-    event.currentTarget.classList.add('dragging');
+const dragStart = target => {
+    target.classList.add('dragging');
 };
 
 const dragEnd = event => {
@@ -33,11 +33,16 @@ const allowDrop = event => {
 };
 
 Array.from(document.querySelectorAll('.card')).forEach(card => {
-    card.addEventListener('dragstart', dragStart);
     card.addEventListener('dragend', dragEnd);
 });
 
 Array.from(document.querySelectorAll('.column')).forEach(column => {
     column.addEventListener('dragenter', dragEnter);
     column.addEventListener('dragleave', dragLeave);
+});
+
+document.addEventListener('dragstart', e => {
+    if (e.target.className.includes('card')) {
+        dragStart(e.target);
+    }
 });
