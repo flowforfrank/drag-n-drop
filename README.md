@@ -9,7 +9,7 @@
 
 **❓ Why is the scale effect doesn't work after the first drag?**
 - This happens because the HTML of the column is updated. Since the event listeners are on the `.card`
-  inside the `.column`, these will be detached from the DOM, after the first HTML update. This means they won't be triggered anymore, therefore they won't get the `.dragging` class which applies the scale effect. To fix this, all you have to do is delegate the event listener from the document.
+  inside the `.column`, these will be detached from the DOM, after the first HTML update. This means they won't be triggered anymore, therefore they won't get the `.dragging` class which applies the scale effect. To fix this, all you have to do is delegate the event listener from the document. The same is true for the `dragend` event.
   ```JavaScript
   document.addEventListener('dragstart', e => {
     if (e.target.className.includes('card')) {

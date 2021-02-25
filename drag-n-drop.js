@@ -2,8 +2,8 @@ const dragStart = target => {
     target.classList.add('dragging');
 };
 
-const dragEnd = event => {
-    event.currentTarget.classList.remove('dragging');
+const dragEnd = target => {
+    target.classList.remove('dragging');
 };
 
 const dragEnter = event => {
@@ -20,9 +20,7 @@ const drag = event => {
 };
 
 const drop = event => {
-    Array.from(document.querySelectorAll('.column'))
-         .forEach(column => column.classList.remove('drop'));
-
+    document.querySelectorAll('.column').forEach(column => column.classList.remove('drop'));
     document.querySelector(`[data-id="${event.dataTransfer.getData('text/plain')}"]`).remove();
 
     event.currentTarget.innerHTML = event.currentTarget.innerHTML + event.dataTransfer.getData('text/html');
@@ -32,11 +30,7 @@ const allowDrop = event => {
     event.preventDefault();
 };
 
-Array.from(document.querySelectorAll('.card')).forEach(card => {
-    card.addEventListener('dragend', dragEnd);
-});
-
-Array.from(document.querySelectorAll('.column')).forEach(column => {
+document.querySelectorAll('.column').forEach(column => {
     column.addEventListener('dragenter', dragEnter);
     column.addEventListener('dragleave', dragLeave);
 });
@@ -44,5 +38,11 @@ Array.from(document.querySelectorAll('.column')).forEach(column => {
 document.addEventListener('dragstart', e => {
     if (e.target.className.includes('card')) {
         dragStart(e.target);
+    }
+});
+
+document.addEventListener('dragend', e => {
+    if (e.target.className.includes('card')) {
+        dragEnd(e.target);
     }
 });
